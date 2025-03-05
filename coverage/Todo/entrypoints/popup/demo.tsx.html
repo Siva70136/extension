@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Todo/entrypoints/popup/secreen.tsx</title>
+    <title>Code coverage report for Todo/entrypoints/popup/demo.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Todo/entrypoints/popup</a> secreen.tsx</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Todo/entrypoints/popup</a> demo.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/32</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/32</span>
             </div>
         
             
@@ -98,7 +98,10 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -107,18 +110,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -128,46 +121,62 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { useState } from "react";<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { useEffect, useState } from "react";<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const Popup = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const [streamId, setStreamId] = useState&lt;string | null&gt;(null);</span>
+<span class="cstat-no" title="statement not covered" >export default function Popup() {</span>
+<span class="cstat-no" title="statement not covered" >  const [isHighContrast, setIsHighContrast] = useState&lt;boolean&gt;(false);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  const startScreenCapture = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    console.log("Start screen capture");</span>
-<span class="cstat-no" title="statement not covered" >    browser.desktopCapture.chooseDesktopMedia(</span>
-<span class="cstat-no" title="statement not covered" >      ["screen", "window", "tab"],</span>
-      (id) =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (!id) {</span>
-<span class="cstat-no" title="statement not covered" >          console.log("User canceled screen sharing.");</span>
-<span class="cstat-no" title="statement not covered" >          return;</span>
-        }
-<span class="cstat-no" title="statement not covered" >        setStreamId(id);</span>
-<span class="cstat-no" title="statement not covered" >        console.log("Stream ID:", id);</span>
-<span class="cstat-no" title="statement not covered" >      },</span>
+<span class="cstat-no" title="statement not covered" >  useEffect(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    chrome.runtime.sendMessage({ action: "getHighContrast" }, (response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      if (response) setIsHighContrast(response.value);</span>
+<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >  }, []);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  const toggleHighContrast = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    chrome.runtime.sendMessage(</span>
+<span class="cstat-no" title="statement not covered" >      { action: "setHighContrast", value: !isHighContrast },</span>
+<span class="cstat-no" title="statement not covered" >      () =&gt; setIsHighContrast(!isHighContrast),</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
-  };
+<span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className="p-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;h1 className="text-lg font-bold"&gt;Screen Capture&lt;/h1&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div style={{ padding: 20, textAlign: "center" }}&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;h2&gt;High Contrast Mode&lt;/h2&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;button</span>
-<span class="cstat-no" title="statement not covered" >        onClick={startScreenCapture}</span>
-<span class="cstat-no" title="statement not covered" >        className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg"</span>
-<span class="cstat-no" title="statement not covered" >      &gt;</span>
-        Start Capture
+<span class="cstat-no" title="statement not covered" >        onClick={toggleHighContrast}</span>
+<span class="cstat-no" title="statement not covered" >        style={{</span>
+<span class="cstat-no" title="statement not covered" >          padding: "10px 20px",</span>
+<span class="cstat-no" title="statement not covered" >          fontSize: "16px",</span>
+<span class="cstat-no" title="statement not covered" >          backgroundColor: isHighContrast ? "#000" : "#ccc",</span>
+<span class="cstat-no" title="statement not covered" >          color: isHighContrast ? "#fff" : "#000",</span>
+<span class="cstat-no" title="statement not covered" >          border: "none",</span>
+<span class="cstat-no" title="statement not covered" >          cursor: "pointer",</span>
+<span class="cstat-no" title="statement not covered" >          borderRadius: "5px",</span>
+<span class="cstat-no" title="statement not covered" >        }}</span>
+      &gt;
+<span class="cstat-no" title="statement not covered" >        {isHighContrast ? "Disable High Contrast" : "Enable High Contrast"}</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/button&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {streamId &amp;&amp; &lt;p className="mt-3 text-green-500"&gt;Stream ID: {streamId}&lt;/p&gt;}</span>
-    &lt;/div&gt;
+<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
   );
-<span class="cstat-no" title="statement not covered" >};</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >export default Popup;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -175,7 +184,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-04T09:39:37.454Z
+                at 2025-03-05T06:19:19.371Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

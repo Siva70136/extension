@@ -1,3 +1,5 @@
+import { defineBackground } from "wxt/sandbox";
+
 export default defineBackground(async () => {
   // console.log("chrome.accessibilityFeatures:", chrome.accessibilityFeatures);
   // console.log(typeof (chrome.accessibilityFeatures))
@@ -7,8 +9,8 @@ export default defineBackground(async () => {
   // }
   const extensionId = browser.runtime.id;
   console.log(extensionId);
-  const allCookies = await browser.cookies.getAll({});
-  console.log(allCookies);
+  // const allCookies = await browser.cookies.getAll({});
+  // console.log(allCookies);
   await storage.setMeta("local:preference", { theme: "dark", language: "en" });
 
   const info = await storage.getMeta("local:preference");
@@ -25,7 +27,7 @@ export default defineBackground(async () => {
     { key: "session:installDate", value: Date.now() },
     { item: userId, value: 7015 },
   ]);
-  browser.runtime.onInstalled.addListener(({ reason }) => {
+  browser.runtime.onInstalled.addListener(({ reason }: any) => {
     if (reason === "install") {
       browser.tabs.create({
         url: "./index.html",
@@ -34,13 +36,13 @@ export default defineBackground(async () => {
   });
 
   //======= close previouse tab ==========
-  // browser.tabs.onCreated.addListener(async function () {
-  //   let queryOptions = { active: true, lastFocusedWindow: true };
-  //   let [tab] = await browser.tabs.query(queryOptions);
-  //   if (tab?.id !== undefined) {
-  //     browser.tabs.remove(tab.id - 1);
-  //   }
-  // });
+  browser.tabs.onCreated.addListener(async function () {
+    let queryOptions = { active: true, lastFocusedWindow: true };
+    let [tab] = await browser.tabs.query(queryOptions);
+    if (tab?.id !== undefined) {
+      browser.tabs.remove(tab.id - 1);
+    }
+  });
 
   //======= creating bookmarks ==========
   function createBookmark(title: string, url: string) {
@@ -75,27 +77,27 @@ export default defineBackground(async () => {
 
   // ======== copy text of the tab ========
 
-  // browser.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
-  //   if (message.action === "getSelectedText") {
-  //     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  //     console.log(tab?.id);
+  browser.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+    if (message.action === "getSelectedText") {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      console.log(tab?.id);
 
-  //     if (tab?.id) {
-  //       const results = await chrome.scripting.executeScript({
-  //         target: { tabId: tab.id },
-  //         func: () => window.getSelection()?.toString() || "",
-  //       });
+      if (tab?.id) {
+        const results = await chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          func: () => window.getSelection()?.toString() || "",
+        });
 
-  //       // Extract selected text from results
-  //       const selectedText = results[0]?.result || "";
-  //       console.log("selected text: ", selectedText);
-  //       sendResponse({ text: selectedText });
-  //     } else {
-  //       sendResponse({ text: "" });
-  //     }
-  //   }
-  //   return true; // Required for async sendResponse
-  // });
+        // Extract selected text from results
+        const selectedText = results[0]?.result || "";
+        console.log("selected text: ", selectedText);
+        sendResponse({ text: selectedText });
+      } else {
+        sendResponse({ text: "" });
+      }
+    }
+    return true; // Required for async sendResponse
+  });
 
   browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "getSelectedText") {
