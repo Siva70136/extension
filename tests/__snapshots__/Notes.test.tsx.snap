@@ -1,0 +1,112 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Notes component > renders correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div>
+        <h2
+          class="text-xl font-bold mb-3"
+        >
+          Notes Saver
+        </h2>
+        <textarea
+          class="resize-none p-2 text-lg font-bold w-full h-24 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="Type your note here..."
+        />
+        <button
+          class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md mt-3 w-24 hover:bg-cyan-500 transition"
+        >
+          Save
+        </button>
+        <button
+          class="ml-2 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md mt-3 w-24 hover:bg-cyan-500 transition"
+        >
+          Copy
+        </button>
+        <ul
+          class="list-none p-0 mt-4 space-y-2"
+        />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div>
+      <h2
+        class="text-xl font-bold mb-3"
+      >
+        Notes Saver
+      </h2>
+      <textarea
+        class="resize-none p-2 text-lg font-bold w-full h-24 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        placeholder="Type your note here..."
+      />
+      <button
+        class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md mt-3 w-24 hover:bg-cyan-500 transition"
+      >
+        Save
+      </button>
+      <button
+        class="ml-2 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md mt-3 w-24 hover:bg-cyan-500 transition"
+      >
+        Copy
+      </button>
+      <ul
+        class="list-none p-0 mt-4 space-y-2"
+      />
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

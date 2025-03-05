@@ -9,8 +9,8 @@ export default defineBackground(async () => {
   // }
   const extensionId = browser.runtime.id;
   console.log(extensionId);
-  // const allCookies = await browser.cookies.getAll({});
-  // console.log(allCookies);
+  const allCookies = await chrome.cookies.getAll({});
+  console.log(allCookies);
   await storage.setMeta("local:preference", { theme: "dark", language: "en" });
 
   const info = await storage.getMeta("local:preference");
@@ -46,7 +46,7 @@ export default defineBackground(async () => {
 
   //======= creating bookmarks ==========
   function createBookmark(title: string, url: string) {
-    browser.bookmarks.create({
+    chrome.bookmarks.create({
       title: title,
       url: url,
     });
