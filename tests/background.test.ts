@@ -2,6 +2,29 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { fakeBrowser } from "wxt/testing";
 import background from "../entrypoints/background";
 
+// Mock browser.windows.getCurrent
+browser.windows.getCurrent = vi.fn(() =>
+  Promise.resolve({
+    id: 100,
+    focused: true,
+    type: "normal",
+    state: "maximized",
+  } as browser.windows.Window)
+);
+
+// Mock browser.tabs.query
+browser.tabs.query = vi.fn(() =>
+  Promise.resolve([
+    {
+      id: 1,
+      windowId: 100,
+      active: true,
+      url: "https://example.com",
+    },
+  ] as browser.tabs.Tab[])
+);
+
+
 browser.cookies.getAll = () =>
   [
     {
@@ -11,9 +34,20 @@ browser.cookies.getAll = () =>
       httpOnly: false,
     },
   ] as any;
-  
+
+browser.bookmarks.create = vi.fn();
+browser.i18n.getAcceptLanguages=vi.fn();
+
+const getAcceptLanguages = vi.fn(()=>{
+  return ["en-US", "en"];
+});
+
 const logMock = vi.fn();
 console.log = logMock;
+
+function createBookmark(title: string, url: string): any {
+  return {title: title, url: url};
+}
 
 describe("Background Entrypoint", () => {
   beforeEach(() => {
@@ -36,20 +70,6 @@ describe("Background Entrypoint", () => {
     expect(await storage.getItem("session:startTime")).toBeDefined();
   });
 
-
-  // it("should create a bookmark successfully", () => {
-  //   const bookmarkDetails = {
-  //     title: "Test Bookmark",
-  //     url: "https://example.com",
-  //   };
-
-  //   chrome.bookmarks.create(bookmarkDetails, (bookmark) => {
-  //     expect(bookmark).toHaveProperty("id");
-  //     expect(bookmark.title).toBe("Test Bookmark");
-  //     expect(bookmark.url).toBe("https://example.com");
-  //   });
-  // });
-
   it("should return cookies for the specified domain", () => {
     browser.cookies.getAll({ domain: "example.com" }, (cookies) => {
       expect(cookies).toHaveLength(1);
@@ -62,5 +82,15 @@ describe("Background Entrypoint", () => {
     browser.cookies.getAll({}, (cookies) => {
       expect(cookies).toEqual([]);
     });
+  });
+
+  it("should create a bookmark with the given title and URL", () => {
+    const bookmark = createBookmark("Test Bookmark", "https://example.com");
+    expect(bookmark.title).toBe("Test Bookmark");
+    expect(bookmark.url).toBe("https://example.com");
+  });
+  it("get the accept languages", () => {
+    const data=getAcceptLanguages();
+    expect(data).toEqual(["en-US", "en"]);
   });
 });

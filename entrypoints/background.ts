@@ -7,6 +7,13 @@ export default defineBackground(async () => {
   //   console.log(i);
 
   // }
+  browser.runtime.onInstalled.addListener(({ reason }: any) => {
+    if (reason === "install") {
+      browser.tabs.create({
+        url: "./index.html",
+      });
+    }
+  });
   const extensionId = browser.runtime.id;
   console.log(extensionId);
   const allCookies = await chrome.cookies.getAll({});
@@ -27,13 +34,7 @@ export default defineBackground(async () => {
     { key: "session:installDate", value: Date.now() },
     { item: userId, value: 7015 },
   ]);
-  browser.runtime.onInstalled.addListener(({ reason }: any) => {
-    if (reason === "install") {
-      browser.tabs.create({
-        url: "./index.html",
-      });
-    }
-  });
+
 
   //======= close previouse tab ==========
   browser.tabs.onCreated.addListener(async function () {
@@ -46,7 +47,7 @@ export default defineBackground(async () => {
 
   //======= creating bookmarks ==========
   function createBookmark(title: string, url: string) {
-    chrome.bookmarks.create({
+    browser.bookmarks.create({
       title: title,
       url: url,
     });

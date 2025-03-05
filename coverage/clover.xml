@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741160823088" clover="3.2.0">
-  <project timestamp="1741160823088" name="All files">
-    <metrics statements="504" coveredstatements="56" conditionals="19" coveredconditionals="6" methods="20" coveredmethods="3" elements="543" coveredelements="65" complexity="0" loc="504" ncloc="504" packages="3" files="12" classes="12"/>
+<coverage generated="1741170115531" clover="3.2.0">
+  <project timestamp="1741170115531" name="All files">
+    <metrics statements="504" coveredstatements="90" conditionals="19" coveredconditionals="7" methods="20" coveredmethods="4" elements="543" coveredelements="101" complexity="0" loc="504" ncloc="504" packages="3" files="12" classes="12"/>
     <package name="Todo">
       <metrics statements="41" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="postcss.config.cjs" path="F:\extensions\Todo\postcss.config.cjs">
@@ -59,46 +59,46 @@
       </file>
     </package>
     <package name="Todo.entrypoints">
-      <metrics statements="132" coveredstatements="5" conditionals="3" coveredconditionals="1" methods="5" coveredmethods="0"/>
+      <metrics statements="132" coveredstatements="39" conditionals="3" coveredconditionals="2" methods="5" coveredmethods="1"/>
       <file name="background.ts" path="F:\extensions\Todo\entrypoints\background.ts">
-        <metrics statements="128" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="0"/>
+        <metrics statements="128" coveredstatements="39" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="10" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
+        <line num="48" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
         <line num="82" count="0" type="stmt"/>
         <line num="83" count="0" type="stmt"/>
@@ -112,7 +112,7 @@
         <line num="96" count="0" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
         <line num="99" count="0" type="stmt"/>
-        <line num="102" count="0" type="stmt"/>
+        <line num="102" count="2" type="stmt"/>
         <line num="103" count="0" type="stmt"/>
         <line num="104" count="0" type="stmt"/>
         <line num="105" count="0" type="stmt"/>
@@ -141,21 +141,21 @@
         <line num="136" count="0" type="stmt"/>
         <line num="139" count="0" type="stmt"/>
         <line num="140" count="0" type="stmt"/>
-        <line num="143" count="0" type="stmt"/>
+        <line num="143" count="2" type="stmt"/>
         <line num="144" count="0" type="stmt"/>
         <line num="145" count="0" type="stmt"/>
         <line num="146" count="0" type="stmt"/>
         <line num="147" count="0" type="stmt"/>
-        <line num="149" count="0" type="stmt"/>
-        <line num="151" count="0" type="stmt"/>
+        <line num="149" count="2" type="stmt"/>
+        <line num="151" count="2" type="stmt"/>
         <line num="152" count="0" type="stmt"/>
         <line num="153" count="0" type="stmt"/>
         <line num="154" count="0" type="stmt"/>
         <line num="155" count="0" type="stmt"/>
-        <line num="159" count="0" type="stmt"/>
-        <line num="160" count="0" type="stmt"/>
-        <line num="163" count="0" type="stmt"/>
-        <line num="166" count="0" type="stmt"/>
+        <line num="159" count="2" type="stmt"/>
+        <line num="160" count="2" type="stmt"/>
+        <line num="163" count="2" type="stmt"/>
+        <line num="166" count="2" type="stmt"/>
         <line num="167" count="0" type="stmt"/>
         <line num="168" count="0" type="stmt"/>
         <line num="169" count="0" type="stmt"/>
@@ -165,7 +165,7 @@
         <line num="176" count="0" type="stmt"/>
         <line num="179" count="0" type="stmt"/>
         <line num="180" count="0" type="stmt"/>
-        <line num="185" count="0" type="stmt"/>
+        <line num="185" count="2" type="stmt"/>
         <line num="187" count="0" type="stmt"/>
         <line num="188" count="0" type="stmt"/>
         <line num="189" count="0" type="stmt"/>
@@ -181,15 +181,15 @@
         <line num="201" count="0" type="stmt"/>
         <line num="204" count="0" type="stmt"/>
         <line num="205" count="0" type="stmt"/>
-        <line num="206" count="0" type="stmt"/>
-        <line num="210" count="0" type="stmt"/>
+        <line num="206" count="2" type="stmt"/>
+        <line num="210" count="2" type="stmt"/>
         <line num="211" count="0" type="stmt"/>
         <line num="212" count="0" type="stmt"/>
         <line num="213" count="0" type="stmt"/>
         <line num="214" count="0" type="stmt"/>
         <line num="215" count="0" type="stmt"/>
         <line num="216" count="0" type="stmt"/>
-        <line num="218" count="0" type="stmt"/>
+        <line num="218" count="2" type="stmt"/>
       </file>
       <file name="content.ts" path="F:\extensions\Todo\entrypoints\content.ts">
         <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
