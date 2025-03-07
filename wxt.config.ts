@@ -17,6 +17,7 @@ export default defineConfig({
       "desktopCapture",
       "storage",
       "tabs",
+      "identity"
     ],
     host_permissions: ["<all_urls>"],
   },

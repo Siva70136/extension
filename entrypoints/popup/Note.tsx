@@ -14,15 +14,15 @@ function Notes() {
       const storedNotes = localStorage.getItem("notes");
       if (storedNotes) {
         const savedNotes = JSON.parse(storedNotes);
-        console.log("Saved notes:", savedNotes); // ✅ Proper logging
+        console.log("Saved notes:", savedNotes);
         setNotes(savedNotes);
       } else {
         console.log("No notes found in localStorage.");
-        setNotes([]); // ✅ Ensures state is initialized
+        setNotes([]);
       }
     } catch (error) {
       console.error("Error loading notes from localStorage:", error);
-      setNotes([]); // ✅ Prevents app from breaking
+      setNotes([]);
     }
   }, []);
 
@@ -56,7 +56,7 @@ function Notes() {
   };
 
   const copy = async () => {
-    const response = await browser.runtime.sendMessage({
+    const response: any = await browser.runtime.sendMessage({
       action: "getSelectedText",
     });
     console.log("Response: ");

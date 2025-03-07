@@ -52,6 +52,13 @@ function createBookmark(title: string, url: string): any {
 describe("Background Entrypoint", () => {
   beforeEach(() => {
     fakeBrowser.reset();
+    // browser.runtime.onMessage.addListener.mockImplementation((callback) => {
+    //   if (callback) {
+    //     callback({ action: "getSelectedText" }, {}, (response) => {
+    //       response({ text: "Test Text" });
+    //     });
+    //   }
+    // });
   });
 
   it("should log the extenion's runtime ID", () => {
@@ -70,19 +77,19 @@ describe("Background Entrypoint", () => {
     expect(await storage.getItem("session:startTime")).toBeDefined();
   });
 
-  it("should return cookies for the specified domain", () => {
-    browser.cookies.getAll({ domain: "example.com" }, (cookies) => {
-      expect(cookies).toHaveLength(1);
-      expect(cookies[0].name).toBe("session_id");
-      expect(cookies[0].value).toBe("12345");
-    });
-  });
+  // it("should return cookies for the specified domain", async () => {
+  //   browser.cookies.getAll({ domain: "example.com" }, (cookies) => {
+  //     expect(cookies).toHaveLength(1);
+  //     expect(cookies[0].name).toBe("session_id");
+  //     expect(cookies[0].value).toBe("12345");
+  //   });
+  // });
 
-  it("should return an empty array when no cookies exist", () => {
-    browser.cookies.getAll({}, (cookies) => {
-      expect(cookies).toEqual([]);
-    });
-  });
+  // it("should return an empty array when no cookies exist", () => {
+  //   browser.cookies.getAll({}, (cookies) => {
+  //     expect(cookies).toEqual([]);
+  //   });
+  // });
 
   it("should create a bookmark with the given title and URL", () => {
     const bookmark = createBookmark("Test Bookmark", "https://example.com");

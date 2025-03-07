@@ -1,5 +1,5 @@
 
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
 import { expect } from "vitest";
 
 // JSDom + Vitest don't play well with each other. Long story short - default

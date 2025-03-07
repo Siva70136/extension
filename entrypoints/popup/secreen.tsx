@@ -5,7 +5,7 @@ const Popup = () => {
 
   const startScreenCapture = () => {
     console.log("Start screen capture");
-    browser.desktopCapture.chooseDesktopMedia(
+    chrome.desktopCapture.chooseDesktopMedia(
       ["screen", "window", "tab"],
       (id) => {
         if (!id) {
@@ -14,7 +14,7 @@ const Popup = () => {
         }
         setStreamId(id);
         console.log("Stream ID:", id);
-      },
+      }
     );
   };
 

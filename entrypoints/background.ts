@@ -35,7 +35,6 @@ export default defineBackground(async () => {
     { item: userId, value: 7015 },
   ]);
 
-
   //======= close previouse tab ==========
   browser.tabs.onCreated.addListener(async function () {
     let queryOptions = { active: true, lastFocusedWindow: true };
@@ -78,27 +77,32 @@ export default defineBackground(async () => {
 
   // ======== copy text of the tab ========
 
-  browser.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
-    if (message.action === "getSelectedText") {
-      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      console.log(tab?.id);
-
-      if (tab?.id) {
-        const results = await chrome.scripting.executeScript({
-          target: { tabId: tab.id },
-          func: () => window.getSelection()?.toString() || "",
+  browser.runtime.onMessage.addListener(
+    async (message, sender, sendResponse) => {
+      if (message.action === "getSelectedText") {
+        const [tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
         });
+        console.log(tab?.id);
 
-        // Extract selected text from results
-        const selectedText = results[0]?.result || "";
-        console.log("selected text: ", selectedText);
-        sendResponse({ text: selectedText });
-      } else {
-        sendResponse({ text: "" });
+        if (tab?.id) {
+          const results = await chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: () => window.getSelection()?.toString() || "",
+          });
+
+          // Extract selected text from results
+          const selectedText = results[0]?.result || "";
+          console.log("selected text: ", selectedText);
+          sendResponse({ text: selectedText });
+        } else {
+          sendResponse({ text: "" });
+        }
       }
+      return true; // Required for async sendResponse
     }
-    return true; // Required for async sendResponse
-  });
+  );
 
   browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "getSelectedText") {
@@ -216,6 +220,7 @@ export default defineBackground(async () => {
       console.log(`Visiting ${details.url}`);
     });
   });
+  
 });
 
 // get extId  -c
