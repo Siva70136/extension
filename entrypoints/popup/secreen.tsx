@@ -14,7 +14,7 @@ const Popup = () => {
         }
         setStreamId(id);
         console.log("Stream ID:", id);
-      }
+      },
     );
   };
 

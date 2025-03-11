@@ -17,8 +17,26 @@ export default defineConfig({
       "desktopCapture",
       "storage",
       "tabs",
-      "identity"
+      "identity",
+      "offscreen",
     ],
     host_permissions: ["<all_urls>"],
+    web_accessible_resources: [
+      {
+        resources: ["offscreen.html"],
+        matches: ["<all_urls>"],
+      },
+    ],
+
+    oauth2: {
+      client_id:
+        "908833248797-fpjibraunpcc9i2ioh82mtdefh1mu3f2.apps.googleusercontent.com",
+      scopes: ["openid", "email", "profile"],
+    },
   },
 });
+
+// https://apis.google.com
+// https://www.gstatic.com
+// https://www.googleapis.com
+// https://securetoken.googleapis.com

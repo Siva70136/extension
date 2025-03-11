@@ -54,7 +54,7 @@ export default defineBackground(async () => {
 
   createBookmark(
     "Extensions Wiki",
-    "https://wiki.mozilla.org/Add-ons/WebExtensions"
+    "https://wiki.mozilla.org/Add-ons/WebExtensions",
   );
   //createBookmark('Extensions doc', 'https://developer.chrome.com/docs/extensions');
 
@@ -78,7 +78,7 @@ export default defineBackground(async () => {
   // ======== copy text of the tab ========
 
   browser.runtime.onMessage.addListener(
-    async (message, sender, sendResponse) => {
+    async (message:any, sender, sendResponse) => {
       if (message.action === "getSelectedText") {
         const [tab] = await chrome.tabs.query({
           active: true,
@@ -101,10 +101,10 @@ export default defineBackground(async () => {
         }
       }
       return true; // Required for async sendResponse
-    }
+    },
   );
 
-  browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  browser.runtime.onMessage.addListener((message:any, sender, sendResponse) => {
     if (message.action === "getSelectedText") {
       browser.tabs.query(
         { active: true, currentWindow: true },
@@ -138,7 +138,7 @@ export default defineBackground(async () => {
           } else {
             sendResponse({ text: "" });
           }
-        }
+        },
       );
 
       return true;
@@ -168,9 +168,9 @@ export default defineBackground(async () => {
   updateTabCountBadge();
 
   // ==== accessibility features =================
-  browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  browser.runtime.onMessage.addListener((message:any, sender, sendResponse) => {
     if (message.action === "getHighContrast") {
-      browser.accessibilityFeatures.animationPolicy.get({}, (details) => {
+      browser.accessibilityFeatures.animationPolicy.get({}, (details:any) => {
         sendResponse({ value: details.value });
       });
       return true;
@@ -178,7 +178,7 @@ export default defineBackground(async () => {
 
     if (message.action === "setHighContrast") {
       browser.accessibilityFeatures.animationPolicy.set({ value: "none" }, () =>
-        console.log("Animations disabled!")
+        console.log("Animations disabled!"),
       );
 
       return true;
@@ -203,12 +203,12 @@ export default defineBackground(async () => {
             } else {
               alert("Cookie not found.");
             }
-          }
+          },
         );
 
         browser.tabs.onUpdated.removeListener(listener);
       }
-    }
+    },
   );
 
   // === Get the History  ===
@@ -220,7 +220,76 @@ export default defineBackground(async () => {
       console.log(`Visiting ${details.url}`);
     });
   });
-  
+
+  // ===== authentication =====
+  const OFFSCREEN_DOCUMENT_PATH = "offscreen.html";
+  const FIREBASE_HOSTING_URL = import.meta.env.WXT_FIREBASE_HOSTING_URL;
+
+  let creatingOffscreenDocument: any;
+
+  async function hasOffscreenDocument() {
+    const matchedClients = await clients.matchAll();
+    return matchedClients.some((client) =>
+      client.url.endsWith(OFFSCREEN_DOCUMENT_PATH),
+    );
+  }
+
+  async function setupOffscreenDocument() {
+    if (await hasOffscreenDocument()) return;
+
+    if (creatingOffscreenDocument) {
+      await creatingOffscreenDocument;
+    } else {
+      creatingOffscreenDocument = chrome.offscreen.createDocument({
+        url: OFFSCREEN_DOCUMENT_PATH,
+        reasons: [chrome.offscreen.Reason.DOM_SCRAPING],
+        justification: "Firebase Authentication",
+      });
+      await creatingOffscreenDocument;
+      creatingOffscreenDocument = null;
+    }
+  }
+
+  async function getAuthFromOffscreen() {
+    await setupOffscreenDocument();
+    return new Promise((resolve, reject) => {
+      chrome.runtime.sendMessage(
+        { action: "getAuth", target: "offscreen" },
+        (response) => {
+          console.log(response);
+          if (chrome.runtime.lastError) {
+            reject(chrome.runtime.lastError);
+          } else {
+            resolve(response);
+          }
+        },
+      );
+    });
+  }
+
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log(message);
+    if (message.action === "signIn") {
+      getAuthFromOffscreen()
+        .then((user) => {
+          console.log(user);
+          chrome.storage.local.set({ user: user }, () => {
+            sendResponse({ user: user });
+          });
+        })
+        .catch((error) => {
+          console.log("Authentication error:", error);
+          sendResponse({ error: error.message });
+        });
+      console.log("end");
+      return true;
+    } else if (message.action === "signOut") {
+      chrome.storage.local.remove("user", () => {
+        sendResponse(true);
+      });
+      return true;
+    }
+  });
 });
 
 // get extId  -c

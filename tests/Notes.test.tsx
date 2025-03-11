@@ -8,11 +8,10 @@ globalThis.browser = {
     onMessage: {
       addListener: vi.fn(),
       removeListener: vi.fn(),
-      hasListeners: vi.fn().mockReturnValue(true), 
+      hasListeners: vi.fn().mockReturnValue(true),
     },
   },
 } as any;
-
 
 Object.assign(navigator, {
   clipboard: {
@@ -27,7 +26,7 @@ describe("Notes component", () => {
   test("renders the textarea and save button", () => {
     render(<Notes />);
     expect(
-      screen.getByPlaceholderText("Type your note here...")
+      screen.getByPlaceholderText("Type your note here..."),
     ).toBeInTheDocument();
     expect(screen.getByText("Save")).toBeInTheDocument();
   });
@@ -74,16 +73,16 @@ describe("Notes component", () => {
   it("should accepting the text by placeholder", async () => {
     render(<Notes />);
     const inputElement = screen.getByPlaceholderText("Type your note here...");
-    const button =screen.getByRole('button',{name: /save/i});
-    await userEvent.type(inputElement, "Hello, this is a test note.");   
+    const button = screen.getByRole("button", { name: /save/i });
+    await userEvent.type(inputElement, "Hello, this is a test note.");
     expect(inputElement).toHaveValue("Hello, this is a test note.");
 
     await userEvent.click(button);
-    const element=screen.getByText("Hello, this is a test note.");
+    const element = screen.getByText("Hello, this is a test note.");
     expect(element).toBeInTheDocument();
 
-    const deleteButton=screen.getByText("❌");
+    const deleteButton = screen.getByText("❌");
     await userEvent.click(deleteButton);
-    expect(screen.queryByText("Hello, this is a test note.")).toBeNull();     
+    expect(screen.queryByText("Hello, this is a test note.")).toBeNull();
   });
 });

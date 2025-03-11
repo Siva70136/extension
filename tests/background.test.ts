@@ -9,7 +9,7 @@ browser.windows.getCurrent = vi.fn(() =>
     focused: true,
     type: "normal",
     state: "maximized",
-  } as browser.windows.Window)
+  } as browser.windows.Window),
 );
 
 // Mock browser.tabs.query
@@ -21,9 +21,8 @@ browser.tabs.query = vi.fn(() =>
       active: true,
       url: "https://example.com",
     },
-  ] as browser.tabs.Tab[])
+  ] as browser.tabs.Tab[]),
 );
-
 
 browser.cookies.getAll = () =>
   [
@@ -36,9 +35,9 @@ browser.cookies.getAll = () =>
   ] as any;
 
 browser.bookmarks.create = vi.fn();
-browser.i18n.getAcceptLanguages=vi.fn();
+browser.i18n.getAcceptLanguages = vi.fn();
 
-const getAcceptLanguages = vi.fn(()=>{
+const getAcceptLanguages = vi.fn(() => {
   return ["en-US", "en"];
 });
 
@@ -46,7 +45,7 @@ const logMock = vi.fn();
 console.log = logMock;
 
 function createBookmark(title: string, url: string): any {
-  return {title: title, url: url};
+  return { title: title, url: url };
 }
 
 describe("Background Entrypoint", () => {
@@ -97,7 +96,7 @@ describe("Background Entrypoint", () => {
     expect(bookmark.url).toBe("https://example.com");
   });
   it("get the accept languages", () => {
-    const data=getAcceptLanguages();
+    const data = getAcceptLanguages();
     expect(data).toEqual(["en-US", "en"]);
   });
 });
